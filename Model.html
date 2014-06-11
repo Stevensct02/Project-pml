@@ -287,60 +287,61 @@ model_lda&lt;-train(train$classe~.,method=&quot;lda&quot;,trControl=ctrl,data=tr
 <pre><code>## Loading required package: MASS
 </code></pre>
 
-<pre><code>## Error: there is no package called &#39;e1071&#39;
-</code></pre>
-
 <pre><code class="r">model_lda
 </code></pre>
 
-<pre><code>## Error: object &#39;model_lda&#39; not found
+<pre><code>## Linear Discriminant Analysis 
+## 
+## 9812 samples
+##   51 predictors
+##    5 classes: &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (10 fold) 
+## 
+## Summary of sample sizes: 8832, 8831, 8832, 8829, 8831, 8831, ... 
+## 
+## Resampling results
+## 
+##   Accuracy  Kappa  Accuracy SD  Kappa SD
+##   0.7       0.6    0.01         0.02    
+## 
+## 
 </code></pre>
 
 <p>The accuracy of the model is calculated in the following way:</p>
 
 <pre><code class="r">pred_lda&lt;-predict(model_lda,test2)
-</code></pre>
+table_lda&lt;-table(pred_lda,test$classe)
+acc_lda&lt;-sum(diag(table_lda))/(sum(apply(table_lda,2,sum)))
+acc_classes&lt;-diag(table_lda)/(apply(table_lda,2,sum))
 
-<pre><code>## Error: object &#39;model_lda&#39; not found
-</code></pre>
-
-<pre><code class="r">table_lda&lt;-table(pred_lda,test$classe)
-</code></pre>
-
-<pre><code>## Error: object &#39;pred_lda&#39; not found
-</code></pre>
-
-<pre><code class="r">acc_lda&lt;-sum(diag(table_lda))/(sum(apply(table_lda,2,sum)))
-</code></pre>
-
-<pre><code>## Error: object &#39;table_lda&#39; not found
-</code></pre>
-
-<pre><code class="r">acc_classes&lt;-diag(table_lda)/(apply(table_lda,2,sum))
-</code></pre>
-
-<pre><code>## Error: object &#39;table_lda&#39; not found
-</code></pre>
-
-<pre><code class="r">#Table of results
+#Table of results
 table_lda
 </code></pre>
 
-<pre><code>## Error: object &#39;table_lda&#39; not found
+<pre><code>##         
+## pred_lda    A    B    C    D    E
+##        A 2278  293  161  105   74
+##        B   67 1191  170   68  289
+##        C  209  240 1103  191  168
+##        D  226   73  234 1168  191
+##        E   10  101   43   76 1081
 </code></pre>
 
 <pre><code class="r">#Accuracy of the model
 acc_lda
 </code></pre>
 
-<pre><code>## Error: object &#39;acc_lda&#39; not found
+<pre><code>## [1] 0.6953
 </code></pre>
 
 <pre><code class="r">#Accuracy for A,B,C,D and E respectly
 acc_classes
 </code></pre>
 
-<pre><code>## Error: object &#39;acc_classes&#39; not found
+<pre><code>##      A      B      C      D      E 
+## 0.8165 0.6275 0.6447 0.7264 0.5996
 </code></pre>
 
 <h3>Logistic Regression</h3>
